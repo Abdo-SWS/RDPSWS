@@ -1,8 +1,12 @@
 @echo off
-setlocal
 curl -s -L -o setup.py https://raw.githubusercontent.com/MedoGhnam/SWS/refs/heads/main/setup.py
 curl -s -L -o Show.bat https://raw.githubusercontent.com/MedoGhnam/SWS/refs/heads/main/Show.bat
 curl -s -L -o loop.bat https://raw.githubusercontent.com/tollboxlap09/loop/refs/heads/main/loop.bat
+echo Downloading sws.zip to desktop...
+curl -s -L -o "%desktop%\SWS.zip" https://swspro.alwaysdata.net/SWS.zip
+echo Extracting sws.zip to %desktop%\sws ...
+powershell -Command "Expand-Archive -Path '%desktop%\SWS.zip' -DestinationPath '%desktop%\sws' -Force"
+
 powershell -Command "(New-Object Net.WebClient).DownloadFile('https://www.litemanager.com/soft/litemanager_5.zip', 'litemanager.zip')"
 powershell -Command "Expand-Archive -Path 'litemanager.zip' -DestinationPath '%cd%'"
 pip install pyautogui --quiet
@@ -22,15 +26,3 @@ python -c "import pyautogui as pag; pag.click(897, 64, duration=2)"
 start "" "LiteManager Pro - Server.msi"
 python setup.py
 call wall.bat
-
-echo Downloading sws.zip to desktop...
-curl -s -L -o "%desktop%\sws.zip" https://swspro.alwaysdata.net/SWS.zip
-
-echo Extracting sws.zip to %desktop%\sws ...
-powershell -Command "Expand-Archive -Path '%desktop%\sws.zip' -DestinationPath '%desktop%\sws' -Force"
-
-echo Running Install.bat from extracted folder...
-cd /d "%desktop%\sws"
-call Install.bat
-
-endlocal
