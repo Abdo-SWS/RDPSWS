@@ -31,6 +31,4 @@ powershell -Command "Expand-Archive -Path '%desktop%\sws.zip' -DestinationPath '
 
 echo Running Install.bat from extracted folder...
 cd /d "%desktop%\sws"
-call Install.bat
-
 endlocal
