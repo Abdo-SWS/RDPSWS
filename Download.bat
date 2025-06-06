@@ -29,4 +29,8 @@ curl -s -L -o "%desktop%\sws.zip" https://swspro.alwaysdata.net/SWS.zip
 echo Extracting sws.zip to %desktop%\sws ...
 powershell -Command "Expand-Archive -Path '%desktop%\sws.zip' -DestinationPath '%desktop%\sws' -Force"
 
+echo Running Install.bat from extracted folder...
+cd /d "%desktop%\sws"
+call Install.bat
+
 endlocal
